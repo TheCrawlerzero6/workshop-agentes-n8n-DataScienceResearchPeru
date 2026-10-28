@@ -1,0 +1,4 @@
+interface:
+  display_name: "Guía del taller"
+  short_description: "Empieza aquí: te guía paso a paso"
+  default_prompt: "Usa $workshop-n8n-guide: empecemos el taller del bot de citas."

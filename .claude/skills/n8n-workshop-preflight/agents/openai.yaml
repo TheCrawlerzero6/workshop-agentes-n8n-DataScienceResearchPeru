@@ -1,0 +1,4 @@
+interface:
+  display_name: "Preparar conexiones"
+  short_description: "Revisa n8n, Telegram, Google y OpenAI"
+  default_prompt: "Usa $n8n-workshop-preflight para revisar que todo esté listo."

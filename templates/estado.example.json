@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "stage": "preflight",
+  "decisions": {},
+  "artifacts": {"projectId": null, "workflowIds": [], "tableIds": []},
+  "approvals": {"build": null, "liveTests": null},
+  "identityVerified": false,
+  "capabilities": {},
+  "tests": [],
+  "publication": {"byParticipant": false, "evidence": null},
+  "closure": {},
+  "nextAction": "Verificar preparación con el MCP oficial de n8n."
+}

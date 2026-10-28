@@ -1,0 +1,5 @@
+local/
+__pycache__/
+*.pyc
+# Se comparte solo por Drive
+guia-configuracion-taller.txt

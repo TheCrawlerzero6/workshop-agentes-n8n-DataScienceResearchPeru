@@ -1,0 +1,149 @@
+{
+  "name": "Taller citas · retención",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 1,
+              "triggerAtMinute": 0
+            }
+          ]
+        }
+      },
+      "id": "kit-34",
+      "name": "Cada hora",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "function requireReady(c) {\n  if (c.ready !== true ||\n      !c.botKey || !c.calendarId || c.calendarId.startsWith('REPLACE_') ||\n      !c.historyTableId || c.historyTableId.startsWith('REPLACE_') ||\n      !c.operationsTableId || c.operationsTableId.startsWith('REPLACE_')) {\n    throw new Error('Configuración pendiente: completa el preflight y la revisión antes de ejecutar.');\n  }\n  new Intl.DateTimeFormat('es', { timeZone: c.timezone }).format();\n  return c;\n}\nrequireReady({\"ready\":false,\"botName\":\"Asistente de citas\",\"tone\":\"amable y breve\",\"botKey\":\"taller-citas-01\",\"timezone\":\"America/Guayaquil\",\"defaultDurationMinutes\":60,\"calendarId\":\"REPLACE_FIXED_CALENDAR_ID\",\"modelId\":\"SELECT_MODEL_IN_N8N\",\"historyTableId\":\"REPLACE_HISTORY_TABLE_ID\",\"operationsTableId\":\"REPLACE_OPERATIONS_TABLE_ID\",\"mainWorkflowId\":\"REPLACE_MAIN_WORKFLOW_ID\",\"bookingWorkflowId\":\"REPLACE_BOOKING_WORKFLOW_ID\",\"credentials\":{\"telegram\":{\"id\":\"\",\"name\":\"\"},\"calendar\":{\"id\":\"\",\"name\":\"\"},\"model\":{\"id\":\"\",\"name\":\"\"}}});return [{json:{ok:true}}];"
+      },
+      "id": "kit-35",
+      "name": "Verificar tablas del taller",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "deleteRows",
+        "dataTableId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "REPLACE_HISTORY_TABLE_ID",
+          "cachedResultName": "Taller citas · historial"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "expiresAt",
+              "condition": "lte",
+              "keyValue": "={{ $now.toISO() }}"
+            }
+          ]
+        },
+        "options": {
+          "dryRun": false
+        }
+      },
+      "id": "kit-36",
+      "name": "Borrar historial vencido",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        440,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "deleteRows",
+        "dataTableId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "REPLACE_OPERATIONS_TABLE_ID",
+          "cachedResultName": "Taller citas · operaciones"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "expiresAt",
+              "condition": "lte",
+              "keyValue": "={{ $now.toISO() }}"
+            }
+          ]
+        },
+        "options": {
+          "dryRun": false
+        }
+      },
+      "id": "kit-37",
+      "name": "Borrar operaciones vencidas",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        660,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Cada hora": {
+      "main": [
+        [
+          {
+            "node": "Verificar tablas del taller",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verificar tablas del taller": {
+      "main": [
+        [
+          {
+            "node": "Borrar historial vencido",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Borrar operaciones vencidas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Guayaquil",
+    "saveDataSuccessExecution": "none",
+    "saveDataErrorExecution": "none",
+    "saveManualExecutions": false
+  },
+  "pinData": {},
+  "tags": [],
+  "meta": {
+    "kitVersion": "1.0.0",
+    "distributionReady": false
+  }
+}

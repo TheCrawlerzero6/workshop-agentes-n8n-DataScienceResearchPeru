@@ -1,0 +1,9 @@
+{
+  "executionOrder": "v1",
+  "timezone": "America/Guayaquil",
+  "saveDataSuccessExecution": "none",
+  "saveDataErrorExecution": "none",
+  "saveManualExecutions": false,
+  "callerPolicy": "workflowsFromAList",
+  "callerIds": "REPLACE_MAIN_WORKFLOW_ID"
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Diseñar mi bot"
+  short_description: "Seis preguntas rápidas y un plan"
+  default_prompt: "Usa $calendar-bot-design para definir cómo será mi bot."

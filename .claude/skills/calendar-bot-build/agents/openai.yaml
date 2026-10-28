@@ -1,0 +1,4 @@
+interface:
+  display_name: "Construir el borrador"
+  short_description: "Crea el bot aprobado, sin encenderlo"
+  default_prompt: "Usa $calendar-bot-build para construir el plan que aprobé."

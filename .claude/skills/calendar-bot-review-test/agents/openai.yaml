@@ -1,0 +1,4 @@
+interface:
+  display_name: "Revisar y probar"
+  short_description: "Revisa la seguridad y prueba con tu permiso"
+  default_prompt: "Usa $calendar-bot-review-test para revisar y probar mi bot."

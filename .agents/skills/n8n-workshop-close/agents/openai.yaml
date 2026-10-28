@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cerrar el taller"
+  short_description: "Apaga el bot y revoca accesos"
+  default_prompt: "Usa $n8n-workshop-close para apagar el bot y revocar accesos."

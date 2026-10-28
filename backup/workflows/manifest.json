@@ -1,0 +1,68 @@
+{
+  "version": "1.0.0",
+  "retentionDays": 7,
+  "contextMessages": 20,
+  "approvalMinutes": 10,
+  "tables": [
+    {
+      "key": "historyTableId",
+      "name": "Taller citas · historial",
+      "columns": [
+        {
+          "name": "sessionKey",
+          "type": "string"
+        },
+        {
+          "name": "turnKey",
+          "type": "string"
+        },
+        {
+          "name": "role",
+          "type": "string"
+        },
+        {
+          "name": "content",
+          "type": "string"
+        },
+        {
+          "name": "expiresAt",
+          "type": "date"
+        }
+      ]
+    },
+    {
+      "key": "operationsTableId",
+      "name": "Taller citas · operaciones",
+      "columns": [
+        {
+          "name": "operationKey",
+          "type": "string"
+        },
+        {
+          "name": "sessionKey",
+          "type": "string"
+        },
+        {
+          "name": "kind",
+          "type": "string"
+        },
+        {
+          "name": "status",
+          "type": "string"
+        },
+        {
+          "name": "eventId",
+          "type": "string"
+        },
+        {
+          "name": "result_object",
+          "type": "string"
+        },
+        {
+          "name": "expiresAt",
+          "type": "date"
+        }
+      ]
+    }
+  ]
+}
